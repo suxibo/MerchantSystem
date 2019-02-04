@@ -88,7 +88,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\login.css" />
     <Content Include="Content\css\site.css" />
+    <Content Include="Content\images\bg.jpg" />
+    <Content Include="Content\js\login.js" />
     <Content Include="favicon.ico" />
     <Content Include="Content\js\site.js" />
     <Content Include="Content\lib\jquery-v3.3.1.js" />
@@ -99,7 +102,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Filters\ValidateLoginAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -112,6 +117,7 @@
     <Content Include="Views\_ViewImports.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Auth\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

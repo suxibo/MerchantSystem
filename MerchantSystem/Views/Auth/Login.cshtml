@@ -1,0 +1,49 @@
+﻿@{Layout = null;}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>登录 - 商户系统</title>
+
+    <link href="~/Content/lib/weui/weui.min.css" rel="stylesheet" />
+    <link href="~/Content/lib/weui/jquery-weui.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/content/css/login.css" />
+</head>
+<body>
+    <div id="topbar"></div>
+    <div id="loginbox">
+        <div class="title">ZF商户管理系统</div>
+        @if (ViewData["ErrorMessage"] != null)
+        {
+            <div class="errmsg"> @(ViewData["ErrorMessage"])</div>
+        }
+        <form id="form" action="/auth/login" method="post">
+            <div class="input-group">
+                <label>用户名</label>
+                <div class="input-block">
+                    <input name="UserName" type="text" placeholder="请输入用户名" />
+                </div>
+            </div>
+            <div class="input-group">
+                <label>密码</label>
+                <div class="input-block">
+                    <input name="Password" type="password" placeholder="请输入密码" />
+                </div>
+            </div>
+        </form>
+        <div class="input-group">
+            <div class="input-block">
+                <button id="btnLogin" class="btn-main">登&nbsp;录</button>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="copyright">
+        Copyright&nbsp;&copy;&nbsp;@(DateTime.Now.Year)&nbsp;|&nbsp;Powered by Microsoft
+    </div>
+    <script src="~/content/lib/jquery-v3.3.1.js"></script>
+    <script src="~/Content/lib/weui/jquery-weui.min.js"></script>
+    <script src="~/content/js/login.js"></script>
+</body>
+</html>

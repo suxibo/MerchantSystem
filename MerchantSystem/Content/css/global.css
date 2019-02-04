@@ -1,0 +1,17 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.weui-mask {
+    background: rgba(0,0,0,.2);
+}
+
+.weui-dialog__bd {
+    color: #333;
+}
+
+.weui-dialog__title {
+    color: #888;
+}
