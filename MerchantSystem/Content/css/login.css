@@ -20,6 +20,7 @@ body {
     background-image: url(../images/bg.jpg);
     background-size: cover;
     font-size: 14px;
+    font-family: Tahoma;
 }
 
 table {
@@ -132,4 +133,5 @@ input:focus {
     padding: 16px;
     line-height: 2;
     text-align: center;
+    color: #eee;
 }

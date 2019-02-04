@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MerchantDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Merchant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MerchantNo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="MerchantName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MerchantType" Type="int" Nullable="false" />
+          <Property Name="MerchantStatus" Type="int" Nullable="false" />
+          <Property Name="BalanceAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="FrozenAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="DeductionUnitPrice" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="WithdrawType" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="LegalPersonRealName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="LegalPersonIdCardNo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="LegalPersonMobile" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="MerchantPublicBankCode" Type="varchar" MaxLength="20" />
+          <Property Name="MerchantPublicBankName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MerchantPublicBankAddress" Type="nvarchar" MaxLength="255" />
+          <Property Name="MerchantPublicBankMobile" Type="varchar" MaxLength="20" />
+          <Property Name="USCC" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityContainer Name="MerchantDbModelStoreContainer">
+          <EntitySet Name="Merchant" EntityType="Self.Merchant" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MerchantDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Merchant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MerchantNo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MerchantName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MerchantType" Type="Int32" Nullable="false" />
+          <Property Name="MerchantStatus" Type="Int32" Nullable="false" />
+          <Property Name="BalanceAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="FrozenAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="DeductionUnitPrice" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="WithdrawType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LegalPersonRealName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LegalPersonIdCardNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LegalPersonMobile" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MerchantPublicBankCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MerchantPublicBankName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MerchantPublicBankAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MerchantPublicBankMobile" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="USCC" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="MerchantDb" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Merchant" EntityType="Self.Merchant" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MerchantDbModelStoreContainer" CdmEntityContainer="MerchantDb">
+          <EntitySetMapping Name="Merchant">
+            <EntityTypeMapping TypeName="MerchantDbModel.Merchant">
+              <MappingFragment StoreEntitySet="Merchant">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MerchantNo" ColumnName="MerchantNo" />
+                <ScalarProperty Name="MerchantName" ColumnName="MerchantName" />
+                <ScalarProperty Name="MerchantType" ColumnName="MerchantType" />
+                <ScalarProperty Name="MerchantStatus" ColumnName="MerchantStatus" />
+                <ScalarProperty Name="BalanceAmount" ColumnName="BalanceAmount" />
+                <ScalarProperty Name="FrozenAmount" ColumnName="FrozenAmount" />
+                <ScalarProperty Name="DeductionUnitPrice" ColumnName="DeductionUnitPrice" />
+                <ScalarProperty Name="WithdrawType" ColumnName="WithdrawType" />
+                <ScalarProperty Name="LegalPersonRealName" ColumnName="LegalPersonRealName" />
+                <ScalarProperty Name="LegalPersonIdCardNo" ColumnName="LegalPersonIdCardNo" />
+                <ScalarProperty Name="LegalPersonMobile" ColumnName="LegalPersonMobile" />
+                <ScalarProperty Name="MerchantPublicBankCode" ColumnName="MerchantPublicBankCode" />
+                <ScalarProperty Name="MerchantPublicBankName" ColumnName="MerchantPublicBankName" />
+                <ScalarProperty Name="MerchantPublicBankAddress" ColumnName="MerchantPublicBankAddress" />
+                <ScalarProperty Name="MerchantPublicBankMobile" ColumnName="MerchantPublicBankMobile" />
+                <ScalarProperty Name="USCC" ColumnName="USCC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
