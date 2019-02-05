@@ -1,0 +1,134 @@
+﻿#topbar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 50px;
+    background: #508aeb;
+    z-index: 99;
+}
+
+#topbar .logo {
+    display: inline-block;
+    float: left;
+    width: 15%;
+    line-height: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    background: #5e93ed;
+    overflow: hidden;
+}
+
+#topbarfix {
+    width: 100%;
+    height: 50px;
+    clear: both;
+}
+
+#sidebar {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    bottom: 0;
+    width: 15%;
+    color: #333;
+    background: #fff;
+    overflow: hidden;
+}
+
+.sidemodule {
+    color: rgba(10,24,50,.8);
+}
+
+.sidemodule .head {
+    padding-left: 10px;
+    line-height: 50px;
+}
+
+.sidemodule .body a {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0 20px;
+    line-height: 40px;
+    color: rgba(10,24,50,.8);
+    font-weight: normal;
+    border-left: solid 3px transparent;
+    cursor: pointer;
+}
+
+.sidemodule .body a:hover {
+    color: #000;
+}
+
+.sidemodule .body a.selected {
+    border-left: solid 3px #508aeb;
+    color: #508aeb;
+    background: #eff3f6;
+    font-weight: bold;
+}
+
+.sidemodule .body a.selected i {
+    position: absolute;
+    display: block;
+    right: 8px;
+    top: 15px;
+    border-top: solid 5px transparent;
+    border-left: solid 5px #508aeb;
+    border-bottom: solid 5px transparent;
+}
+
+#mainblock {
+    margin-left: 15%;
+    padding: 15px;
+}
+
+#maintitle {
+    margin: 10px auto 10px 1px;
+    border-left: solid 3px #5e93ed;
+    padding-left: 8px;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.btn-main {
+    display: inline-block;
+    width: 100%;
+    padding: 10px 22px;
+    background-color: #508aeb;
+    border: 1px solid #508aeb;
+    border-radius: 3px;
+    transition: .2s;
+    user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.btn-main:hover {
+    background-color: #397be8;
+    border: 1px solid #397be8;
+}
+
+.btn-main:active {
+    color: #fff;
+    background-color: #0062cc;
+    border-color: #005cbf;
+}
+
+
+#copyright {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 20px 10px;
+    text-align: center;
+    font-size: 12px;
+}

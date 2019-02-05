@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using MerchantSystem.Filters;
 
 namespace MerchantSystem
 {
@@ -11,6 +12,7 @@ namespace MerchantSystem
     {
         protected void Application_Start()
         {
+            GlobalFilters.Filters.Add(new ValidateLoginAttribute());
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }

@@ -18,6 +18,7 @@
 
 body {
     background-image: url(../images/bg.jpg);
+    background-repeat: no-repeat;
     background-size: cover;
     font-size: 14px;
     font-family: Tahoma;
@@ -45,7 +46,7 @@ input {
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #d1d5da;
-    font-size: 16px;
+    font-size: 14px;
     font-family: Tahoma;
     color: #24292e;
     line-height: 20px;
@@ -110,12 +111,13 @@ input:focus {
     background-color: #e56d31;
     border: solid 1px #e56d31;
     border-radius: 3px;
-    font-weight: 500;
     transition: .2s;
     user-select: none;
     vertical-align: middle;
     white-space: nowrap;
     color: #fff;
+    font-size: 16px;
+    font-weight: bold;
     cursor: pointer;
     outline: none;
 }
