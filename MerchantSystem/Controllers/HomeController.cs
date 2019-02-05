@@ -7,7 +7,6 @@ using MerchantSystem.Filters;
 
 namespace MerchantSystem.Controllers
 {
-    [ValidateLogin]
     public class HomeController : Controller
     {
         public ActionResult Index()

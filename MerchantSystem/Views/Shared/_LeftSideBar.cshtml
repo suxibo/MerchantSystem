@@ -1,0 +1,25 @@
+﻿@{Layout = "~/Views/Shared/_Layout.cshtml";}
+@section Styles{
+    <link href="~/Content/css/leftsidebar.css" rel="stylesheet" />
+    <link href="~/Content/css/components.css" rel="stylesheet" />@(RenderSection("Styles", false))
+}<div id="topbar">
+    <div class="logo">ZF商户管理系统</div>
+    <div class="clear"></div>
+</div>
+<div id="topbarfix"></div>
+<div id="mainbody">
+    <div id="sidebar">
+        <div class="sidemodule">
+            <div class="head">商户管理</div>
+            <div class="body">
+                <a href="/merchant/edit">商户开户<i></i></a>
+                <a href="/merchant/list">商户列表<i></i></a>
+            </div>
+        </div>
+        <div id="copyright">
+            Copyright&nbsp;&copy;&nbsp;@(DateTime.Now.Year)<br />Powered&nbsp;by&nbsp;ASP.NET
+        </div>
+    </div>
+    <div id="mainblock">@(RenderBody())</div>
+    <div class="clear"></div>
+</div>@section Scripts{@(RenderSection("Scripts", false))}

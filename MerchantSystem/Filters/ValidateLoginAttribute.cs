@@ -10,7 +10,23 @@ namespace MerchantSystem.Filters
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            base.OnActionExecuting(filterContext);
+            if (!NeedAuthorize(filterContext))
+            {
+                base.OnActionExecuting(filterContext);
+                return;
+            }
+        }
+
+        private Boolean NeedAuthorize(ActionExecutingContext filterContext)
+        {
+            String requestUrl = filterContext.HttpContext.Request.Path;
+
+            if (String.Compare(requestUrl, "/auth/login", true) == 0)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
