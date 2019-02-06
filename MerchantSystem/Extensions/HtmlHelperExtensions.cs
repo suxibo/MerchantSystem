@@ -25,13 +25,13 @@ namespace MerchantSystem
                 {
                     items = from t0 in typeof(T).GetFields(BindingFlags.Public | BindingFlags.Static)
                             let x = t0.GetCustomAttribute<DescriptionAttribute>()
-                            let v = t0.GetValue(null) ?? String.Empty
+                            let v = GetValue(t0)
                             where x != null
                             select new SelectListItem()
                             {
                                 Text = x.Description,
                                 Value = v.ToString(),
-                                Selected = (v == selectedValue)
+                                Selected = v.ToString() == (selectedValue ?? String.Empty).ToString()
                             };
                 }
                 catch { }
@@ -42,7 +42,11 @@ namespace MerchantSystem
                 _cache[enumType] = items;
 
                 StringBuilder sb = new StringBuilder();
-                sb.Append("<option>========</option>");
+
+                if (selectedValue == null)
+                {
+                    sb.Append("<option>========</option>");
+                }
 
                 foreach (var item in items)
                 {
@@ -58,5 +62,28 @@ namespace MerchantSystem
 
             return MvcHtmlString.Empty;
         }
+
+        private static Object GetValue(FieldInfo field, Object instance = null)
+        {
+            try
+            {
+                var v = field.GetValue(instance);
+                if (field.FieldType.IsEnum)
+                {
+                    return (Int32)v;
+                }
+
+                return v != null ? v.ToString() : String.Empty;
+            }
+            catch
+            {
+                return String.Empty;
+            }
+        }
+
+        //public static MvcHtmlString ErrorMessage(this HtmlHelper helper, String fieldName)
+        //{
+            
+        //}
     }
 }
