@@ -26,5 +26,7 @@ namespace MerchantSystem.Models.DbModels
         }
     
         public virtual DbSet<Merchant> Merchant { get; set; }
+        public virtual DbSet<SysLog> SysLog { get; set; }
+        public virtual DbSet<SysUser> SysUser { get; set; }
     }
 }

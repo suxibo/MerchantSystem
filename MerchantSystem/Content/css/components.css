@@ -1,11 +1,12 @@
 ﻿.viewblock {
-    padding: 15px;
+    padding: 16px;
     border-radius: 5px;
     background: #fff;
     box-shadow: 1px 0 20px rgba(0,0,0,.05);
 }
 
 .formview table {
+    margin-top: 16px;
     width: 70%;
 }
 
@@ -53,7 +54,6 @@
 }
 
 .formview .errmsg {
-    margin-bottom: 16px;
     border-top: solid 1px #ddc0c4;
     border-bottom: solid 1px #ddc0c4;
     background: #ffdce0;
@@ -63,7 +63,6 @@
 }
 
 .formview .succmsg {
-    margin-bottom: 16px;
     border-top: solid 1px #c1ddc0;
     border-bottom: solid 1px #c1ddc0;
     background: #dcffdf;
@@ -106,11 +105,18 @@
 .listview .pagenav {
     padding: 15px 5px 0 5px;
     text-align: center;
+    clear: both;
 }
 
 .listview .pagenav .pageblock {
     display: inline-block;
     margin: auto;
+}
+
+.listview .pagenav .pageblock:after {
+    display: block;
+    clear: both;
+    content: '';
 }
 
 .listview .pagenav .pageblock a {

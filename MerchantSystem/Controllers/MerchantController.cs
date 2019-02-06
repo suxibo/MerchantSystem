@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MerchantSystem.Filters;
+using MerchantSystem.Models.DbModels;
 using MerchantSystem.Models.Merchant;
 
 namespace MerchantSystem.Controllers
@@ -17,6 +18,17 @@ namespace MerchantSystem.Controllers
             if (merchantNo.HasValue())
             {
                 ViewData.SetTitle("编辑商户");
+                using (var db = new MerchantDb())
+                {
+                    var find = db.Merchant.FirstOrDefault(x => String.Compare(x.MerchantNo, merchantNo, true) == 0);
+                    if (find == null)
+                    {
+                        ViewData.SetErrorMessage("商户不存在");
+                        return View();
+                    }
+
+                    return View(find.Map<MerchantEditModel>());
+                }
             }
             else
             {
@@ -37,16 +49,37 @@ namespace MerchantSystem.Controllers
             if (!ModelState.IsValid)
             {
                 ViewData.SetErrorMessage(ModelState.GetFirstErrorMessage());
+                return View(model);
             }
 
-            String merchantNo = model.MerchantNo;
-            if (merchantNo.HasValue())
+            using (var db = new MerchantDb())
             {
-                ViewData.SetTitle("编辑商户");
-            }
-            else
-            {
-                ViewData.SetTitle("商户开户");
+                String merchantNo = model.MerchantNo;
+                if (merchantNo.HasValue())
+                {
+                    var find = db.Merchant.FirstOrDefault(x => String.Compare(x.MerchantNo, merchantNo, true) == 0);
+                    model.Map(find);
+                    ViewData.SetTitle("编辑商户");
+                }
+                else
+                {
+                    var newMerchant = new Merchant();
+                    model.Map(newMerchant);
+                    newMerchant.MerchantNo = $"{DateTime.Now.ToString("yyMMddHHmmssf")}";
+                    model.MerchantNo = newMerchant.MerchantNo;
+                    db.Merchant.Add(newMerchant);
+                    ViewData.SetTitle("商户开户");
+                }
+
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    ViewData.SetErrorMessage(ex.Message);
+                    return View(model);
+                }
             }
 
             ViewData.SetSuccessMessage("保存成功");

@@ -1,4 +1,5 @@
-﻿@{Layout = null;}
+﻿@model LoginForm
+@{Layout = null;}
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +17,7 @@
             <div class="input-group">
                 <label>用户名</label>
                 <div class="input-block">
-                    <input name="UserName" type="text" placeholder="请输入用户名" />
+                    <input name="UserName" type="text" placeholder="请输入用户名" value="@(Model!=null?Model.UserName:String.Empty)" />
                 </div>
             </div>
             <div class="input-group">

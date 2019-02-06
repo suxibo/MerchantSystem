@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using MerchantSystem.Models.Auth;
 
 namespace MerchantSystem
 {
@@ -128,6 +129,11 @@ namespace MerchantSystem
             }
 
             return MvcHtmlString.Create(html);
+        }
+
+        public static UserSession GetUserSession(this HtmlHelper helper)
+        {
+            return helper.ViewContext.HttpContext.Session["UserSession"] as UserSession;
         }
     }
 }

@@ -8,6 +8,12 @@
     z-index: 99;
 }
 
+#topbar:after {
+    display: block;
+    clear: both;
+    content: '';
+}
+
 #topbar .logo {
     display: inline-block;
     float: left;
@@ -19,6 +25,56 @@
     text-align: center;
     background: #5e93ed;
     overflow: hidden;
+}
+
+#userinfo {
+    position: relative;
+    display: inline-block;
+    float: right;
+    cursor: pointer;
+}
+
+#userinfo .avatar {
+    margin: 12px 15px 12px auto;
+    line-height: 26px;
+    color: #fff;
+}
+
+#userinfo .avatar:before {
+    display: inline-block;
+    float: left;
+    margin-right: 8px;
+    width: 24px;
+    height: 24px;
+    background: #fff url(/content/images/user.svg) center center no-repeat;
+    background-size: 24px 24px;
+    border-radius: 12px;
+    border: solid 1px #fff;
+    content: '';
+}
+
+#userinfo .menu {
+    position: absolute;
+    display: none;
+    background: #508aeb;
+    top: 100%;
+    right: 0;
+    width: 100px;
+    text-align: center;
+}
+
+#userinfo .menu a {
+    display: block;
+    line-height: 40px;
+    color: #fff;
+}
+
+#userinfo .menu a:hover {
+    background: #397be8;
+}
+
+#userinfo:hover .menu {
+    display: block;
 }
 
 #topbarfix {

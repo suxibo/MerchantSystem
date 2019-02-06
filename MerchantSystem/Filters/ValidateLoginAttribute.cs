@@ -15,6 +15,13 @@ namespace MerchantSystem.Filters
                 base.OnActionExecuting(filterContext);
                 return;
             }
+
+            var session = filterContext.HttpContext.Session["UserSession"];
+            if (session == null)
+            {
+                filterContext.Result = new RedirectResult("/auth/login");
+                return;
+            }
         }
 
         private Boolean NeedAuthorize(ActionExecutingContext filterContext)
