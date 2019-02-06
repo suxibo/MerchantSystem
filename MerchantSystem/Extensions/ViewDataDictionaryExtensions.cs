@@ -18,6 +18,11 @@ namespace MerchantSystem
             vdd["SuccessMessage"] = message;
         }
 
+        public static void SetTitle(this ViewDataDictionary vdd, String title)
+        {
+            vdd["Title"] = title;
+        }
+
         public static String GetErrorMessage(this ViewDataDictionary vdd)
         {
             return (vdd["ErrorMessage"] ?? String.Empty).ToString();
@@ -26,6 +31,11 @@ namespace MerchantSystem
         public static String GetSuccessMessage(this ViewDataDictionary vdd)
         {
             return (vdd["SuccessMessage"] ?? String.Empty).ToString();
+        }
+
+        public static String GetTitle(this ViewDataDictionary vdd)
+        {
+            return (vdd["Title"] ?? String.Empty).ToString();
         }
     }
 }

@@ -126,6 +126,12 @@ input:focus {
     background: #d75a1b;
 }
 
+#loginbox .btn-main:disabled {
+    background-color: #f5a983;
+    border-color: #eb9469;
+    cursor: default;
+}
+
 
 #copyright {
     position: absolute;

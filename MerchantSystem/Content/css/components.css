@@ -1,4 +1,4 @@
-﻿.formview {
+﻿.viewblock {
     padding: 15px;
     border-radius: 5px;
     background: #fff;
@@ -18,14 +18,12 @@
 }
 
 .formview table tbody tr td:nth-child(1) {
-    width: 220px;
     text-align: right;
 }
 
 .formview table tbody tr td:nth-child(3) {
     padding-left: 5px;
     color: red;
-    width: 100px;
     text-align: left;
     font-weight: bold;
     vertical-align: middle;
@@ -72,4 +70,114 @@
     color: #288618;
     font-size: 14px;
     padding: 16px 20px;
+}
+
+.listview table {
+    width: 100%;
+    border-top: solid 1px #dee2e6;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.listview table td {
+    position: relative;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.listview table td a {
+    color: #508aeb;
+}
+
+.listview table td a:hover {
+    color: #2b63c0;
+    text-decoration: underline;
+}
+
+.listview table thead tr {
+    border-bottom: solid 1px #dee2e6;
+    background: #eff3f6;
+}
+
+.listview table tbody tr {
+    border-bottom: dotted 1px #ddd;
+}
+
+.listview .pagenav {
+    padding: 15px 5px 0 5px;
+    text-align: center;
+}
+
+.listview .pagenav .pageblock {
+    display: inline-block;
+    margin: auto;
+}
+
+.listview .pagenav .pageblock a {
+    display: inline-block;
+    float: left;
+    padding: 8px 15px;
+    border-top: solid 1px #dee2e6;
+    border-right: solid 1px #dee2e6;
+    border-bottom: solid 1px #dee2e6;
+    color: #3170d9;
+}
+
+.listview .pagenav .pageblock a:hover {
+    background: #eff3f6;
+}
+
+.listview .pagenav .pageblock a:first-child {
+    border-left: solid 1px #dee2e6;
+    border-radius: 5px 0 0 5px;
+}
+
+.listview .pagenav .pageblock a:last-child {
+    border-radius: 0 5px 5px 0;
+}
+
+.listview .pagenav .pageblock a.selected {
+    margin-left: -1px;
+    border-top-color: #508aeb;
+    border-bottom-color: #508aeb;
+    border-right-color: #508aeb;
+    background: #508aeb;
+    color: #fff;
+}
+
+.listview .toolbox {
+    margin-top: 5px;
+}
+
+.toolbox {
+    margin: 16px auto;
+    width: 100%;
+}
+
+.toolbox:after {
+    display: block;
+    clear: both;
+    content: ' ';
+}
+
+.toolbox .toolitem {
+    display: inline-block;
+    float: left;
+}
+
+.toolbox .toolitem .formfield,
+.toolbox .toolitem .btn-main {
+    display: inline-block;
+    float: left;
+}
+
+.toolbox .toolitem .formfield {
+    width: 250px;
+}
+
+.toolbox .toolitem .btn-main {
+    margin-left: 5px;
+    width: 80px;
+    padding: 7px 10px;
+    font-size: 14px;
 }

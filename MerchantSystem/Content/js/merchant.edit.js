@@ -10,7 +10,7 @@
             $form.find('table tr[data-optional]').fadeOut(200);
             $a.attr("data-state", "close").html('显示选填项');
         }
-    }).on("click", '#btnSubmit', function () {
+    }).on("click", '#btnSave', function () {
         $(this).attr("disabled", "disabled");
         $("#form").submit();
     });

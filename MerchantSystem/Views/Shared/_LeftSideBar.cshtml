@@ -9,8 +9,10 @@
         <div class="sidemodule">
             <div class="head">商户管理</div>
             <div class="body">
-                <a href="/merchant/edit">商户开户<i></i></a>
-                <a href="/merchant/list">商户列表<i></i></a>
+                @(Html.SidebarStaticLink("商户开户", "/merchant/edit"))
+                @(Html.SidebarDynamicLink("编辑商户"))
+                @(Html.SidebarDynamicLink("商户详情"))
+                @(Html.SidebarStaticLink("商户列表", "/merchant/list"))
             </div>
         </div>
         <div id="copyright">
