@@ -4,12 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@(ViewData["Title"]) - 商户系统</title>
-    <link href="~/Content/lib/weui/weui.min.css" rel="stylesheet" />
-    <link href="~/Content/lib/weui/jquery-weui.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="~/content/css/global.css" />@(RenderSection("Styles", false))
+    @(Styles.Render("~/css/global"))@(RenderSection("Styles", false))
 </head>
-<body>@(RenderBody())
-    <script src="~/content/lib/jquery-v3.3.1.js"></script>
-    <script src="~/Content/lib/weui/jquery-weui.min.js"></script>
-    <script src="~/content/js/global.js"></script>@(RenderSection("Scripts", false))</body>
+<body>@(RenderBody())@(RenderSection("Scripts", false))</body>
 </html>

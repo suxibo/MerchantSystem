@@ -25,13 +25,12 @@ namespace MerchantSystem.Controllers
         [HttpPost]
         public ActionResult Edit(MerchantEditModel model)
         {
-            System.Threading.Thread.Sleep(3000);
-
             if (!ModelState.IsValid)
             {
-                ViewData["ErrorMessage"] = ModelState.GetFirstErrorMessage();
+                ViewData.SetErrorMessage(ModelState.GetFirstErrorMessage());
             }
 
+            ViewData.SetSuccessMessage("保存成功");
             return View(model);
         }
 

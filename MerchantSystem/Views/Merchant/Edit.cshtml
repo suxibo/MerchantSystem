@@ -5,10 +5,7 @@
 }
 <div id="maintitle">商户开户</div>
 <div id="merchantEditForm" class="formview">
-    @if (ViewData["ErrorMessage"] != null)
-    {
-        <div class="errmsg">@(ViewData["ErrorMessage"])</div>
-    }
+    @(Html.ResultMessage())
     <form id="form" action="/merchant/edit" method="post">
         <table>
             <tbody>
@@ -152,6 +149,3 @@
         </table>
     </form>
 </div>
-@section Scripts{
-    <script src="~/Content/js/merchant.edit.js"></script>
-}

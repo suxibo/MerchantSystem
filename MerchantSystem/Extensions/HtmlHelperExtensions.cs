@@ -81,9 +81,21 @@ namespace MerchantSystem
             }
         }
 
-        //public static MvcHtmlString ErrorMessage(this HtmlHelper helper, String fieldName)
-        //{
-            
-        //}
+        public static MvcHtmlString ResultMessage(this HtmlHelper helper)
+        {
+            var vd = helper.ViewData;
+            String html = String.Empty;
+
+            if (vd.GetErrorMessage().HasValue())
+            {
+                html = $"<div class=\"errmsg\">{vd.GetErrorMessage()}</div>";
+            }
+            else if (vd.GetSuccessMessage().HasValue())
+            {
+                html = $"<div class=\"succmsg\">{vd.GetSuccessMessage()}</div>";
+            }
+
+            return MvcHtmlString.Create(html);
+        }
     }
 }

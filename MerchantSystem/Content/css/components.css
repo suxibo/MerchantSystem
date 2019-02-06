@@ -63,3 +63,13 @@
     font-size: 14px;
     padding: 16px 20px;
 }
+
+.formview .succmsg {
+    margin-bottom: 16px;
+    border-top: solid 1px #c1ddc0;
+    border-bottom: solid 1px #c1ddc0;
+    background: #dcffdf;
+    color: #288618;
+    font-size: 14px;
+    padding: 16px 20px;
+}
