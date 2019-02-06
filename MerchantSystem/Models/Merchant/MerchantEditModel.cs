@@ -26,18 +26,22 @@ namespace MerchantSystem.Models.Merchant
         /// <summary>
         /// 账户状态
         /// </summary>
+        [Required(ErrorMessage = "账户状态必填")]
         public Int32 MerchantStatus { get; set; }
         /// <summary>
         /// 可用余额
         /// </summary>
+        [Required(ErrorMessage = "可用余额必填")]
         public Decimal BalanceAmount { get; set; }
         /// <summary>
         /// 冻结金额
         /// </summary>
+        [Required(ErrorMessage = "冻结金额必填")]
         public Decimal FrozenAmount { get; set; }
         /// <summary>
         /// 划扣费率
         /// </summary>
+        [Required(ErrorMessage = "划扣费率必填")]
         public Decimal DeductionUnitPrice { get; set; }
         /// <summary>
         /// 提现类型

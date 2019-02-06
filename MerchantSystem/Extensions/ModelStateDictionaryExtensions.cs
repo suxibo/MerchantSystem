@@ -26,5 +26,21 @@ namespace MerchantSystem
 
             return String.Empty;
         }
+
+        public static String GetErrorMessage(this ModelStateDictionary msd, String fieldName)
+        {
+            if (msd != null && msd.Count > 0)
+            {
+                if (msd.TryGetValue(fieldName, out ModelState value))
+                {
+                    if (value.Errors != null && value.Errors.Count > 0)
+                    {
+                        return value.Errors[0].ErrorMessage;
+                    }
+                }
+            }
+
+            return String.Empty;
+        }
     }
 }

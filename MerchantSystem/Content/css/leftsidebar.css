@@ -123,6 +123,12 @@
     border-color: #005cbf;
 }
 
+.btn-main:disabled {
+    background-color: #94baf9;
+    border-color: #8cb2f1;
+    cursor: default;
+}
+
 
 #copyright {
     position: absolute;

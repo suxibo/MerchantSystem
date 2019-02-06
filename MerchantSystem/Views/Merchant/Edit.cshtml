@@ -5,147 +5,147 @@
 }
 <div id="maintitle">商户开户</div>
 <div id="merchantEditForm" class="formview">
-    <table>
-        <tbody>
-            @if (Model.MerchantNo.HasValue())
-            {
-            <tr>
-                <td>商户编号：</td>
-                <td style="width:350px;">
-                    <label>@(Model.MerchantNo)</label>
-                    <input type="hidden" class="formfield" value="@(Model.MerchantNo)" />
-                </td>
-                <td></td>
-            </tr>
-            }
-            <tr>
-                <td>商户名称：</td>
-                <td>
-                    <input type="text" class="formfield" value="@(Model.MerchantName)" />
-                </td>
-                <td>*</td>
-            </tr>
-            <tr>
-                <td>商户类型：</td>
-                <td>
-                    <select type="text" class="formfield">
-                        @(Html.DropDownOptions<MerchantType>(Model.MerchantType))
-                    </select>
-                </td>
-                <td>*</td>
-            </tr>
-            <tr>
-                <td>商户状态：</td>
-                <td>
-                    <select type="text" class="formfield">
-                        @(Html.DropDownOptions<MerchantStatus>(Model.MerchantStatus))
-                    </select>
-                </td>
-                <td>*</td>
-            </tr>
-            <tr>
-                <td>可用余额：</td>
-                <td>
-                    <input type="text" class="formfield" value="@(Model.BalanceAmount.ToString("0.00"))" />
-                </td>
-                <td>*</td>
-            </tr>
-            <tr>
-                <td>冻结金额：</td>
-                <td>
-                    <input type="text" class="formfield" value="@(Model.FrozenAmount.ToString("0.00"))" />
-                </td>
-                <td>*</td>
-            </tr>
-            <tr>
-                <td>划扣费率：</td>
-                <td>
-                    <input type="text" class="formfield" value="@(Model.DeductionUnitPrice.ToString("0.000"))" />
-                </td>
-                <td>*</td>
-            </tr>
-            <tr>
-                <td>提现类型：</td>
-                <td>
-                    <select type="text" class="formfield">
-                        @(Html.DropDownOptions<WithdrawType>(Model.WithdrawType))
-                    </select>
-                </td>
-                <td>*</td>
-            </tr>
-            <tr>
-                <td>法人姓名：</td>
-                <td>
-                    <input type="text" class="formfield" value="@(Model.LegalPersonRealName)" />
-                </td>
-                <td>*</td>
-            </tr>
-            <tr>
-                <td>法人身份证号：</td>
-                <td>
-                    <input type="text" class="formfield" value="@(Model.LegalPersonIdCardNo)" />
-                </td>
-                <td>*</td>
-            </tr>
-            <tr>
-                <td>法人手机号：</td>
-                <td>
-                    <input type="text" class="formfield" value="@(Model.LegalPersonMobile)" />
-                </td>
-                <td>*</td>
-            </tr>
-            <tr data-optional>
-                <td>商户对公银行名称：</td>
-                <td>
-                    <input type="text" class="formfield" value="@(Model.MerchantPublicBankName)" />
-                </td>
-                <td></td>
-            </tr>
-            <tr data-optional>
-                <td>商户对公银行编码：</td>
-                <td>
-                    <input type="text" class="formfield" value="@(Model.MerchantPublicBankCode)" />
-                </td>
-                <td></td>
-            </tr>
-            <tr data-optional>
-                <td>商户对公银行地址：</td>
-                <td>
-                    <input type="text" class="formfield" value="@(Model.MerchantPublicBankAddress)" />
-                </td>
-                <td></td>
-            </tr>
-            <tr data-optional>
-                <td>商户对公银行预留手机号：</td>
-                <td>
-                    <input type="text" class="formfield" value="@(Model.MerchantPublicBankMobile)" />
-                </td>
-                <td></td>
-            </tr>
-            <tr data-optional>
-                <td>统一社会信用代码：</td>
-                <td>
-                    <input type="text" class="formfield" value="@(Model.USCC)" />
-                </td>
-                <td></td>
-            </tr>
-            <tr>
-                <td colspan="2" style="text-align:right;">
-                    <a id="showMore" data-state="close" style="text-decoration:underline;color:#508aeb;">更多选项</a>
-                </td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <td></td>
-                <td>
-                    <button id="btnSubmit" class="btn-main">确定开户</button>
-                </td>
-            </tr>
-        </tfoot>
-    </table>
+    @(Html.ResultMessage())
+    <form id="form" action="/merchant/edit" method="post">
+        <table>
+            <tbody>
+                @if (Model.MerchantNo.HasValue())
+                {
+                    <tr>
+                        <td>商户编号：</td>
+                        <td style="width:350px;">
+                            <label>@(Model.MerchantNo)</label>
+                            <input name="MerchantNo" type="hidden" class="formfield" value="@(Model.MerchantNo)" />
+                        </td>
+                        <td></td>
+                    </tr>
+                }
+                <tr>
+                    <td>商户名称：</td>
+                    <td>
+                        <input name="MerchantName" type="text" class="formfield" value="@(Model.MerchantName)" />
+                    </td>
+                    <td title="必填">*</td>
+                </tr>
+                <tr>
+                    <td>商户类型：</td>
+                    <td>
+                        <select name="MerchantType" type="text" class="formfield">
+                            @(Html.DropDownOptions<MerchantType>(Model.MerchantType))
+                        </select>
+                    </td>
+                    <td title="必填">*</td>
+                </tr>
+                <tr>
+                    <td>商户状态：</td>
+                    <td>
+                        <select name="MerchantStatus" type="text" class="formfield">
+                            @(Html.DropDownOptions<MerchantStatus>(Model.MerchantStatus))
+                        </select>
+                    </td>
+                    <td title="必填">*</td>
+                </tr>
+                <tr>
+                    <td>可用余额：</td>
+                    <td>
+                        <input name="BalanceAmount" type="text" class="formfield" value="@(Model.BalanceAmount.ToString("0.00"))" />
+                    </td>
+                    <td title="必填">*</td>
+                </tr>
+                <tr>
+                    <td>冻结金额：</td>
+                    <td>
+                        <input name="FrozenAmount" type="text" class="formfield" value="@(Model.FrozenAmount.ToString("0.00"))" />
+                    </td>
+                    <td title="必填">*</td>
+                </tr>
+                <tr>
+                    <td>划扣费率：</td>
+                    <td>
+                        <input name="DeductionUnitPrice" type="text" class="formfield" value="@(Model.DeductionUnitPrice.ToString("0.000"))" />
+                    </td>
+                    <td title="必填">*</td>
+                </tr>
+                <tr>
+                    <td>提现类型：</td>
+                    <td>
+                        <select name="WithdrawType" type="text" class="formfield">
+                            @(Html.DropDownOptions<WithdrawType>(Model.WithdrawType))
+                        </select>
+                    </td>
+                    <td title="必填">*</td>
+                </tr>
+                <tr>
+                    <td>法人姓名：</td>
+                    <td>
+                        <input name="LegalPersonRealName" type="text" class="formfield" value="@(Model.LegalPersonRealName)" />
+                    </td>
+                    <td title="必填">*</td>
+                </tr>
+                <tr>
+                    <td>法人身份证号：</td>
+                    <td>
+                        <input name="LegalPersonIdCardNo" type="text" class="formfield" value="@(Model.LegalPersonIdCardNo)" />
+                    </td>
+                    <td title="必填">*</td>
+                </tr>
+                <tr>
+                    <td>法人手机号：</td>
+                    <td>
+                        <input name="LegalPersonMobile" type="text" class="formfield" value="@(Model.LegalPersonMobile)" />
+                    </td>
+                    <td title="必填">*</td>
+                </tr>
+                <tr data-optional>
+                    <td>商户对公银行名称：</td>
+                    <td>
+                        <input name="MerchantPublicBankName" type="text" class="formfield" value="@(Model.MerchantPublicBankName)" />
+                    </td>
+                    <td></td>
+                </tr>
+                <tr data-optional>
+                    <td>商户对公银行编码：</td>
+                    <td>
+                        <input name="MerchantPublicBankCode" type="text" class="formfield" value="@(Model.MerchantPublicBankCode)" />
+                    </td>
+                    <td></td>
+                </tr>
+                <tr data-optional>
+                    <td>商户对公银行地址：</td>
+                    <td>
+                        <input name="MerchantPublicBankAddress" type="text" class="formfield" value="@(Model.MerchantPublicBankAddress)" />
+                    </td>
+                    <td></td>
+                </tr>
+                <tr data-optional>
+                    <td>商户对公银行预留手机号：</td>
+                    <td>
+                        <input name="MerchantPublicBankMobile" type="text" class="formfield" value="@(Model.MerchantPublicBankMobile)" />
+                    </td>
+                    <td></td>
+                </tr>
+                <tr data-optional>
+                    <td>统一社会信用代码：</td>
+                    <td>
+                        <input name="USCC" type="text" class="formfield" value="@(Model.USCC)" />
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align:right;">
+                        <a id="showMore" data-state="close" style="text-decoration:underline;color:#508aeb;">显示选填项</a>
+                    </td>
+                    <td></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button id="btnSubmit" class="btn-main">确定开户</button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </form>
 </div>
-@section Scripts{
-    <script src="~/Content/js/merchant.edit.js"></script>
-}

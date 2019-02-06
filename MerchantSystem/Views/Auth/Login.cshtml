@@ -5,19 +5,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>登录 - 商户系统</title>
-
-    <link href="~/Content/lib/weui/weui.min.css" rel="stylesheet" />
-    <link href="~/Content/lib/weui/jquery-weui.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="~/content/css/login.css" />
+    @(Styles.Render("~/css/login"))
 </head>
 <body>
     <div id="topbar"></div>
     <div id="loginbox">
         <div class="title">ZF商户管理系统</div>
-        @if (ViewData["ErrorMessage"] != null)
-        {
-            <div class="errmsg"> @(ViewData["ErrorMessage"])</div>
-        }
+        @(Html.ResultMessage())
         <form id="form" action="/auth/login" method="post">
             <div class="input-group">
                 <label>用户名</label>
@@ -42,8 +36,6 @@
     <div id="copyright">
         Copyright&nbsp;&copy;&nbsp;@(DateTime.Now.Year)&nbsp;|&nbsp;Powered&nbsp;by&nbsp;ASP.NET
     </div>
-    <script src="~/content/lib/jquery-v3.3.1.js"></script>
-    <script src="~/Content/lib/weui/jquery-weui.min.js"></script>
-    <script src="~/content/js/login.js"></script>
+    @(Scripts.Render("~/js/login"))
 </body>
 </html>
