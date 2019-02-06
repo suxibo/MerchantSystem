@@ -1,7 +1,21 @@
 ﻿@{Layout = "~/Views/Shared/_Layout.cshtml";}@section Styles{@(RenderSection("Styles", false))
 }<div id="topbar">
     <div class="logo">ZF商户管理系统</div>
-    <div class="clear"></div>
+    <div id="userinfo">
+        <div class="avatar">
+            @{
+                var session = Html.GetUserSession();
+                if (session != null)
+                {
+                    @(session.RealName)
+                }
+        }
+    </div>
+    <div class="menu">
+        <a href="/auth/logout">退出</a>
+    </div>
+</div>
+<div class="clear"></div>
 </div>
 <div id="topbarfix"></div>
 <div id="mainbody">
