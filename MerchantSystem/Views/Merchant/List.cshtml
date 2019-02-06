@@ -2,7 +2,14 @@
     Layout = "~/Views/Shared/_LeftSidebar.cshtml";
     ViewData["Title"] = "商户列表";
 }
-<div class="listview">
+<div id="maintitle">商户列表</div>
+<div class="listview viewblock">
+    <div class="toolbox">
+        <div class="toolitem">
+            <input type="text" class="formfield" />
+            <button class="btn btn-main">搜索</button>
+        </div>
+    </div>
     <table>
         <thead>
             <tr>
@@ -12,10 +19,42 @@
                 <td>账户状态</td>
                 <td>法人姓名</td>
                 <td>法人手机号</td>
+                <td style="width:150px;">操作</td>
             </tr>
         </thead>
         <tbody>
-
+            @for (var i = 1; i <= 10; i++)
+            {
+                <tr>
+                    <td>@(i)</td>
+                    <td>商户名称</td>
+                    <td>商户类型</td>
+                    <td>账户状态</td>
+                    <td>法人姓名</td>
+                    <td>法人手机号</td>
+                    <td>
+                        <a data-no="10005">初始化</a>&nbsp;
+                        <a href="/merchant/detail?merchantNo=10005">详情</a>&nbsp;
+                        <a href="/merchant/edit?merchantNo=10005">编辑</a>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
+    <div class="pagenav">
+        <div class="pageblock">
+            <a title="上一页">&lt;</a>
+            <a>1</a>
+            <a>2</a>
+            <a>...</a>
+            <a class="selected">3</a>
+            <a>4</a>
+            <a>5</a>
+            <a>...</a>
+            <a>99</a>
+            <a>100</a>
+            <a title="下一页">&gt;</a>
+        </div>
+    </div>
 </div>
+@section Scripts{@(Scripts.Render("~/js/merchant/list"))}

@@ -12,8 +12,6 @@ namespace MerchantSystem.Models.Merchant
     public enum MerchantType
     {
         [Description("个人")]
-        Personal = 0,
-        [Description("企业")]
-        Company = 1
+        Personal = 0
     }
 }

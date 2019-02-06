@@ -14,6 +14,15 @@ namespace MerchantSystem.Controllers
         public ActionResult Edit()
         {
             String merchantNo = Request.Unvalidated["merchantNo"];
+            if (merchantNo.HasValue())
+            {
+                ViewData.SetTitle("编辑商户");
+            }
+            else
+            {
+                ViewData.SetTitle("商户开户");
+            }
+
             return View(new MerchantEditModel()
             {
                 MerchantType = (Int32)MerchantType.Personal,
@@ -30,6 +39,16 @@ namespace MerchantSystem.Controllers
                 ViewData.SetErrorMessage(ModelState.GetFirstErrorMessage());
             }
 
+            String merchantNo = model.MerchantNo;
+            if (merchantNo.HasValue())
+            {
+                ViewData.SetTitle("编辑商户");
+            }
+            else
+            {
+                ViewData.SetTitle("商户开户");
+            }
+
             ViewData.SetSuccessMessage("保存成功");
             return View(model);
         }
@@ -37,6 +56,13 @@ namespace MerchantSystem.Controllers
         [HttpGet]
         public ActionResult List()
         {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Detail()
+        {
+            ViewData.SetTitle("商户详情");
             return View();
         }
     }

@@ -116,13 +116,13 @@
     <Content Include="Content\images\sidebar_bg.png" />
     <Content Include="Content\js\global.js" />
     <Content Include="Content\js\merchant.edit.js" />
-    <Content Include="Content\lib\weui\jquery-weui.min.css" />
+    <Content Include="Content\js\merchant.list.js" />
     <Content Include="Content\css\login.css" />
     <Content Include="Content\css\global.css" />
     <Content Include="Content\images\bg.jpg" />
     <Content Include="Content\js\login.js" />
-    <Content Include="Content\lib\weui\jquery-weui.min.js" />
-    <Content Include="Content\lib\weui\weui.min.css" />
+    <Content Include="Content\lib\jbox\jBox.all.min.css" />
+    <Content Include="Content\lib\jbox\jBox.all.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="Content\lib\jquery-v3.3.1.js" />
     <Content Include="Global.asax" />
@@ -195,6 +195,7 @@
     <Content Include="Views\Merchant\Edit.cshtml" />
     <Content Include="Views\Merchant\List.cshtml" />
     <Content Include="Views\Shared\_LeftSidebar.cshtml" />
+    <Content Include="Views\Merchant\Detail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -97,5 +97,37 @@ namespace MerchantSystem
 
             return MvcHtmlString.Create(html);
         }
+
+        public static MvcHtmlString SidebarStaticLink(this HtmlHelper helper, String text, String url)
+        {
+            String html = String.Empty;
+            var vd = helper.ViewData;
+            String title = (vd["Title"] ?? String.Empty).ToString();
+
+            if (title == text)
+            {
+                html = $"<a class=\"selected\" href=\"{url}\">{text}</a>";
+            }
+            else
+            {
+                html = $"<a href=\"{url}\">{text}</a>";
+            }
+
+            return MvcHtmlString.Create(html);
+        }
+
+        public static MvcHtmlString SidebarDynamicLink(this HtmlHelper helper, String text)
+        {
+            String html = String.Empty;
+            var vd = helper.ViewData;
+            String title = (vd["Title"] ?? String.Empty).ToString();
+
+            if (title == text)
+            {
+                html = $"<a class=\"selected\">{text}</a>";
+            }
+
+            return MvcHtmlString.Create(html);
+        }
     }
 }

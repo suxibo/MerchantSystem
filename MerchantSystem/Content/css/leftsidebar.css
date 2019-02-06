@@ -70,11 +70,12 @@
     font-weight: bold;
 }
 
-.sidemodule .body a.selected i {
+.sidemodule .body a.selected:after {
     position: absolute;
     display: block;
     right: 8px;
     top: 15px;
+    content: ' ';
     border-top: solid 5px transparent;
     border-left: solid 5px #508aeb;
     border-bottom: solid 5px transparent;
@@ -83,6 +84,7 @@
 #mainblock {
     margin-left: 15%;
     padding: 15px;
+    color: #343b47;
 }
 
 #maintitle {
@@ -93,23 +95,26 @@
     line-height: 20px;
 }
 
-.btn-main {
+.btn {
     display: inline-block;
     width: 100%;
     padding: 10px 22px;
-    background-color: #508aeb;
-    border: 1px solid #508aeb;
     border-radius: 3px;
     transition: .2s;
     user-select: none;
     vertical-align: middle;
     white-space: nowrap;
-    color: #fff;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
     outline: none;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.btn-main {
+    color: #fff;
+    background-color: #508aeb;
+    border: 1px solid #508aeb;
 }
 
 .btn-main:hover {
@@ -129,6 +134,23 @@
     cursor: default;
 }
 
+.btn-delete {
+    color: #ff7881;
+    background-color: transparent;
+    border: 1px solid #ff7881;
+}
+
+.btn-delete:hover {
+    background-color: #eb222e;
+    border-color: #eb222e;
+    color: #fff;
+}
+
+.btn-delete:active {
+    background-color: #b21922;
+    border-color: #b21922;
+    cursor: default;
+}
 
 #copyright {
     position: absolute;
@@ -137,4 +159,5 @@
     padding: 20px 10px;
     text-align: center;
     font-size: 12px;
+    color: #666;
 }
