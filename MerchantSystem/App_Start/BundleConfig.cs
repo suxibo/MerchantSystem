@@ -36,7 +36,7 @@ namespace MerchantSystem
                .Include("~/content/js/merchant.list.js")
            );
 
-            BundleTable.EnableOptimizations = false;
+            BundleTable.EnableOptimizations = true;
         }
 
         private static ScriptBundle JQueryScriptBundle(String virtualPath)
