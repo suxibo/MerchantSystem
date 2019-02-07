@@ -31,5 +31,6 @@ namespace MerchantSystem.Models.DbModels
         public string MerchantPublicBankAddress { get; set; }
         public string MerchantPublicBankMobile { get; set; }
         public string USCC { get; set; }
+        public System.DateTime CreateTime { get; set; }
     }
 }

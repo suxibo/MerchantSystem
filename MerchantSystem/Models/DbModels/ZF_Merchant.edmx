@@ -26,6 +26,7 @@
           <Property Name="MerchantPublicBankAddress" Type="nvarchar" MaxLength="255" />
           <Property Name="MerchantPublicBankMobile" Type="varchar" MaxLength="20" />
           <Property Name="USCC" Type="varchar" MaxLength="30" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="SysLog">
           <Key>
@@ -48,41 +49,35 @@
           <Property Name="Mobile" Type="varchar" MaxLength="20" />
           <Property Name="LastLoginTime" Type="datetime" />
         </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MerchantNo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="RealName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mobile" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="LoginPassword" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="UserStatus" Type="int" Nullable="false" />
+          <Property Name="StoreId" Type="varchar" MaxLength="20" />
+          <Property Name="ParentId" Type="varchar" MaxLength="20" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityContainer Name="MerchantDbModelStoreContainer">
           <EntitySet Name="Merchant" EntityType="Self.Merchant" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SysLog" EntityType="Self.SysLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SysUser" EntityType="Self.SysUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MerchantDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Merchant">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MerchantNo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="MerchantName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MerchantType" Type="Int32" Nullable="false" />
-          <Property Name="MerchantStatus" Type="Int32" Nullable="false" />
-          <Property Name="BalanceAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="FrozenAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="DeductionUnitPrice" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="WithdrawType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="LegalPersonRealName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LegalPersonIdCardNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="LegalPersonMobile" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="MerchantPublicBankCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="MerchantPublicBankName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MerchantPublicBankAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="MerchantPublicBankMobile" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="USCC" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityContainer Name="MerchantDb" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Merchant" EntityType="Self.Merchant" />
           <EntitySet Name="SysLog" EntityType="MerchantDbModel.SysLog" />
           <EntitySet Name="SysUser" EntityType="MerchantDbModel.SysUser" />
+          <EntitySet Name="Merchant" EntityType="MerchantDbModel.Merchant" />
+          <EntitySet Name="User" EntityType="MerchantDbModel.User" />
         </EntityContainer>
         <EntityType Name="SysLog">
           <Key>
@@ -105,35 +100,49 @@
           <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="LastLoginTime" Type="DateTime" Precision="3" />
         </EntityType>
+        <EntityType Name="Merchant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MerchantNo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="MerchantName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MerchantType" Type="Int32" Nullable="false" />
+          <Property Name="MerchantStatus" Type="Int32" Nullable="false" />
+          <Property Name="BalanceAmount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="FrozenAmount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="DeductionUnitPrice" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="WithdrawType" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="LegalPersonRealName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LegalPersonIdCardNo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LegalPersonMobile" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MerchantPublicBankCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MerchantPublicBankName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MerchantPublicBankAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MerchantPublicBankMobile" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="USCC" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MerchantNo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="RealName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LoginPassword" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UserStatus" Type="Int32" Nullable="false" />
+          <Property Name="StoreId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ParentId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="MerchantDbModelStoreContainer" CdmEntityContainer="MerchantDb">
-          <EntitySetMapping Name="Merchant">
-            <EntityTypeMapping TypeName="MerchantDbModel.Merchant">
-              <MappingFragment StoreEntitySet="Merchant">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="MerchantNo" ColumnName="MerchantNo" />
-                <ScalarProperty Name="MerchantName" ColumnName="MerchantName" />
-                <ScalarProperty Name="MerchantType" ColumnName="MerchantType" />
-                <ScalarProperty Name="MerchantStatus" ColumnName="MerchantStatus" />
-                <ScalarProperty Name="BalanceAmount" ColumnName="BalanceAmount" />
-                <ScalarProperty Name="FrozenAmount" ColumnName="FrozenAmount" />
-                <ScalarProperty Name="DeductionUnitPrice" ColumnName="DeductionUnitPrice" />
-                <ScalarProperty Name="WithdrawType" ColumnName="WithdrawType" />
-                <ScalarProperty Name="LegalPersonRealName" ColumnName="LegalPersonRealName" />
-                <ScalarProperty Name="LegalPersonIdCardNo" ColumnName="LegalPersonIdCardNo" />
-                <ScalarProperty Name="LegalPersonMobile" ColumnName="LegalPersonMobile" />
-                <ScalarProperty Name="MerchantPublicBankCode" ColumnName="MerchantPublicBankCode" />
-                <ScalarProperty Name="MerchantPublicBankName" ColumnName="MerchantPublicBankName" />
-                <ScalarProperty Name="MerchantPublicBankAddress" ColumnName="MerchantPublicBankAddress" />
-                <ScalarProperty Name="MerchantPublicBankMobile" ColumnName="MerchantPublicBankMobile" />
-                <ScalarProperty Name="USCC" ColumnName="USCC" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="SysLog">
             <EntityTypeMapping TypeName="MerchantDbModel.SysLog">
               <MappingFragment StoreEntitySet="SysLog">
@@ -153,6 +162,45 @@
                 <ScalarProperty Name="RealName" ColumnName="RealName" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Merchant">
+            <EntityTypeMapping TypeName="MerchantDbModel.Merchant">
+              <MappingFragment StoreEntitySet="Merchant">
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="USCC" ColumnName="USCC" />
+                <ScalarProperty Name="MerchantPublicBankMobile" ColumnName="MerchantPublicBankMobile" />
+                <ScalarProperty Name="MerchantPublicBankAddress" ColumnName="MerchantPublicBankAddress" />
+                <ScalarProperty Name="MerchantPublicBankName" ColumnName="MerchantPublicBankName" />
+                <ScalarProperty Name="MerchantPublicBankCode" ColumnName="MerchantPublicBankCode" />
+                <ScalarProperty Name="LegalPersonMobile" ColumnName="LegalPersonMobile" />
+                <ScalarProperty Name="LegalPersonIdCardNo" ColumnName="LegalPersonIdCardNo" />
+                <ScalarProperty Name="LegalPersonRealName" ColumnName="LegalPersonRealName" />
+                <ScalarProperty Name="WithdrawType" ColumnName="WithdrawType" />
+                <ScalarProperty Name="DeductionUnitPrice" ColumnName="DeductionUnitPrice" />
+                <ScalarProperty Name="FrozenAmount" ColumnName="FrozenAmount" />
+                <ScalarProperty Name="BalanceAmount" ColumnName="BalanceAmount" />
+                <ScalarProperty Name="MerchantStatus" ColumnName="MerchantStatus" />
+                <ScalarProperty Name="MerchantType" ColumnName="MerchantType" />
+                <ScalarProperty Name="MerchantName" ColumnName="MerchantName" />
+                <ScalarProperty Name="MerchantNo" ColumnName="MerchantNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="MerchantDbModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+                <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+                <ScalarProperty Name="LoginPassword" ColumnName="LoginPassword" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="RealName" ColumnName="RealName" />
+                <ScalarProperty Name="MerchantNo" ColumnName="MerchantNo" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -1,3 +1,141 @@
-﻿@{
+﻿@model MerchantDetailModel
+@{
     Layout = "~/Views/Shared/_LeftSidebar.cshtml";
 }
+<div id="maintitle">@(ViewData.GetTitle())</div>
+<div class="formview viewblock">
+    @(Html.ResultMessage())
+    @if (Model != null)
+    {
+        <table>
+            <tbody>
+                <tr>
+                    <td>商户编号：</td>
+                    <td style="width:350px;">
+                        <label>@(Model.MerchantNo)</label>
+                    </td>
+                    <td style="width: 100px;"></td>
+                </tr>
+                <tr>
+                    <td style="width: 220px;">商户名称：</td>
+                    <td>
+                        <label>@(Model.MerchantName)</label>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>商户类型：</td>
+                    <td>
+                        <label>@(((MerchantType)Model.MerchantType).GetDescription())</label>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>商户状态：</td>
+                    <td>
+                        <label class="mer-status-@(((MerchantStatus)Model.MerchantStatus).ToString().ToLowerInvariant())">@(((MerchantStatus)Model.MerchantStatus).GetDescription())</label>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>可用余额：</td>
+                    <td>
+                        <label>@(Model.BalanceAmount.ToString("0.00"))</label>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>冻结金额：</td>
+                    <td>
+                        <label>@(Model.FrozenAmount.ToString("0.00"))</label>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>划扣费率：</td>
+                    <td>
+                        <label>@(Model.DeductionUnitPrice.ToString("0.0000"))</label>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>提现类型：</td>
+                    <td>
+                        <label>@(Model.WithdrawType)</label>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>法人姓名：</td>
+                    <td>
+                        <label>@(Model.LegalPersonRealName)</label>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>法人身份证号：</td>
+                    <td>
+                        <label>@(Model.LegalPersonIdCardNo)</label>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>法人手机号：</td>
+                    <td>
+                        <label>@(Model.LegalPersonMobile)</label>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>商户对公银行名称：</td>
+                    <td>
+                        <label>@(Model.MerchantPublicBankName)</label>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>商户对公银行编码：</td>
+                    <td>
+                        <label>@(Model.MerchantPublicBankCode)</label>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>商户对公银行地址：</td>
+                    <td>
+                        <label>@(Model.MerchantPublicBankAddress)</label>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>商户对公银行预留手机号：</td>
+                    <td>
+                        <label>@(Model.MerchantPublicBankMobile)</label>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>统一社会信用代码：</td>
+                    <td>
+                        <label>@(Model.USCC)</label>
+                    </td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <table>
+                <tfoot>
+                    <tr>
+                        <td style="width:220px;"></td>
+                        <td>
+                            <a href="/merchant/edit?merchantNo=@(Model.MerchantNo)" class="btn btn-main">编辑</a>
+                        </td>
+                        <td style="width:100px;"></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    }
+</div>
+@section Scripts{@(Scripts.Render("~/js/merchant/edit"))}

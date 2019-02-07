@@ -20,6 +20,7 @@ namespace MerchantSystem
                 .Include("~/content/css/global.css")
                 .Include("~/content/css/leftsidebar.css")
                 .Include("~/content/css/components.css")
+                .Include("~/content/css/merchant.css")
             );
 
             bundles.Add(JQueryScriptBundle("~/js/login")

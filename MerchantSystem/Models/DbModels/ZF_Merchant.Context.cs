@@ -25,8 +25,9 @@ namespace MerchantSystem.Models.DbModels
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Merchant> Merchant { get; set; }
         public virtual DbSet<SysLog> SysLog { get; set; }
         public virtual DbSet<SysUser> SysUser { get; set; }
+        public virtual DbSet<Merchant> Merchant { get; set; }
+        public virtual DbSet<User> User { get; set; }
     }
 }

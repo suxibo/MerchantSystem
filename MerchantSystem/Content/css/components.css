@@ -82,6 +82,7 @@
     position: relative;
     padding: 10px 0;
     text-align: center;
+    font-size: 12px;
 }
 
 .listview table td a {
@@ -175,10 +176,6 @@
 .toolbox .toolitem .btn-main {
     display: inline-block;
     float: left;
-}
-
-.toolbox .toolitem .formfield {
-    width: 250px;
 }
 
 .toolbox .toolitem .btn-main {

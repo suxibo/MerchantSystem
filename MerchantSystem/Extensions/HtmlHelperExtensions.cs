@@ -14,40 +14,25 @@ namespace MerchantSystem
 {
     public static class HtmlHelperExtensions
     {
-        private static readonly ConcurrentDictionary<Type, IEnumerable<SelectListItem>> _cache = new ConcurrentDictionary<Type, IEnumerable<SelectListItem>>();
-
         public static MvcHtmlString DropDownOptions<T>(this HtmlHelper helper, Object selectedValue = null)
         {
             var enumType = typeof(T);
-
-            if (!_cache.TryGetValue(enumType, out IEnumerable<SelectListItem> items))
-            {
-                try
-                {
-                    items = from t0 in typeof(T).GetFields(BindingFlags.Public | BindingFlags.Static)
-                            let x = t0.GetCustomAttribute<DescriptionAttribute>()
-                            let v = GetValue(t0)
-                            where x != null
-                            select new SelectListItem()
-                            {
-                                Text = x.Description,
-                                Value = v.ToString(),
-                                Selected = v.ToString() == (selectedValue ?? String.Empty).ToString()
-                            };
-                }
-                catch { }
-            }
+            var items = from t0 in typeof(T).GetFields(BindingFlags.Public | BindingFlags.Static)
+                        let x = t0.GetCustomAttribute<DescriptionAttribute>()
+                        let v = GetValue(t0)
+                        where x != null
+                        select new SelectListItem()
+                        {
+                            Text = x.Description,
+                            Value = v.ToString(),
+                            Selected = selectedValue != null ? (v.ToString() == selectedValue.ToString()) : false
+                        };
 
             if (items != null && items.Count() > 0)
             {
-                _cache[enumType] = items;
-
                 StringBuilder sb = new StringBuilder();
 
-                if (selectedValue == null)
-                {
-                    sb.Append("<option>========</option>");
-                }
+                sb.Append("<option value>========</option>");
 
                 foreach (var item in items)
                 {

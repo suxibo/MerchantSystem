@@ -112,7 +112,9 @@
   <ItemGroup>
     <Content Include="Content\css\components.css" />
     <Content Include="Content\css\leftsidebar.css" />
+    <Content Include="Content\css\merchant.css" />
     <Content Include="Content\images\banner_bg.png" />
+    <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\sidebar_bg.png" />
     <Content Include="Content\images\user.svg" />
     <Content Include="Content\js\global.js" />
@@ -124,6 +126,7 @@
     <Content Include="Content\js\login.js" />
     <Content Include="Content\lib\jbox\jBox.all.min.css" />
     <Content Include="Content\lib\jbox\jBox.all.min.js" />
+    <Content Include="Content\lib\jquery-v3.3.1.dev.js" />
     <Content Include="favicon.ico" />
     <Content Include="Content\lib\jquery-v3.3.1.js" />
     <Content Include="Global.asax" />
@@ -146,6 +149,7 @@
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MerchantController.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Extensions\ModelStateDictionaryExtensions.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
@@ -157,6 +161,8 @@
     </Compile>
     <Compile Include="Models\Auth\LoginForm.cs" />
     <Compile Include="Models\Auth\UserSession.cs" />
+    <Compile Include="Models\Common\PagedList.cs" />
+    <Compile Include="Models\Common\PageInfo.cs" />
     <Compile Include="Models\DbModels\Merchant.cs">
       <DependentUpon>ZF_Merchant.tt</DependentUpon>
     </Compile>
@@ -164,6 +170,9 @@
       <DependentUpon>ZF_Merchant.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DbModels\SysUser.cs">
+      <DependentUpon>ZF_Merchant.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DbModels\User.cs">
       <DependentUpon>ZF_Merchant.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DbModels\ZF_Merchant.Context.cs">
@@ -181,10 +190,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ZF_Merchant.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Merchant\MerchantDetailModel.cs" />
     <Compile Include="Models\Merchant\MerchantEditModel.cs" />
+    <Compile Include="Models\Merchant\MerchantItem.cs" />
     <Compile Include="Models\Merchant\MerchantStatus.cs" />
     <Compile Include="Models\Merchant\WithdrawType.cs" />
     <Compile Include="Models\Merchant\MerchantType.cs" />
+    <Compile Include="Models\User\UserStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\MD5Util.cs" />
   </ItemGroup>
@@ -206,6 +218,7 @@
     <Content Include="Views\Merchant\List.cshtml" />
     <Content Include="Views\Shared\_LeftSidebar.cshtml" />
     <Content Include="Views\Merchant\Detail.cshtml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -213,9 +226,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>

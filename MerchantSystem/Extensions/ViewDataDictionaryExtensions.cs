@@ -23,6 +23,16 @@ namespace MerchantSystem
             vdd["Title"] = title;
         }
 
+        public static void SetQS(this ViewDataDictionary vdd, String queryString)
+        {
+            vdd["QueryString"] = queryString;
+        }
+
+        public static String GetQS(this ViewDataDictionary vdd)
+        {
+            return (vdd["QueryString"] ?? String.Empty).ToString();
+        }
+
         public static String GetErrorMessage(this ViewDataDictionary vdd)
         {
             return (vdd["ErrorMessage"] ?? String.Empty).ToString();
