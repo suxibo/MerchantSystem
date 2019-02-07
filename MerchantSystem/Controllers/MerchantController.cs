@@ -76,6 +76,18 @@ namespace MerchantSystem.Controllers
                 if (merchantNo.HasValue())
                 {
                     var find = db.Merchant.FirstOrDefault(x => String.Compare(x.MerchantNo, merchantNo, true) == 0);
+                    if (find == null)
+                    {
+                        ViewData.SetErrorMessage("商户不存在");
+                        return View(model);
+                    }
+
+                    if (model.MerchantStatus == (Int32)MerchantStatus.WaitForActive && find.MerchantStatus > (Int32)MerchantStatus.WaitForActive)
+                    {
+                        ViewData.SetErrorMessage("已激活的商户不能退回到未激活状态");
+                        return View(model);
+                    }
+
                     model.Map(find);
                 }
                 else
