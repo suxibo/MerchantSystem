@@ -16,7 +16,7 @@
                             <td>商户编号：</td>
                             <td style="width:350px;">
                                 <label>@(Model.MerchantNo)</label>
-                                <input name="MerchantNo" type="hidden" class="formfield" value="@(Model.MerchantNo)" />
+                                <input name="MerchantNo" type="hidden" class="formfield" value="@(Model.MerchantNo)" spellcheck="false" />
                             </td>
                             <td></td>
                         </tr>
@@ -24,7 +24,7 @@
                     <tr>
                         <td style="width: 220px;">商户名称：</td>
                         <td>
-                            <input name="MerchantName" type="text" class="formfield" value="@(Model.MerchantName)" />
+                            <input name="MerchantName" type="text" class="formfield" value="@(Model.MerchantName)" spellcheck="false" />
                         </td>
                         <td style="width: 100px;" title="必填">*</td>
                     </tr>
@@ -40,30 +40,38 @@
                     <tr>
                         <td>商户状态：</td>
                         <td>
-                            <select name="MerchantStatus" type="text" class="formfield">
-                                @(Html.DropDownOptions<MerchantStatus>(Model.MerchantStatus))
-                            </select>
+                            @if (Model.MerchantNo.HasValue() && Model.MerchantStatus != (Int32)MerchantStatus.WaitForActive)
+                            {
+                                <select name="MerchantStatus" class="formfield">
+                                    @(Html.DropDownOptions<MerchantStatus>(Model.MerchantStatus))
+                                </select>
+                            }
+                            else
+                            {
+                                <label>@(MerchantStatus.WaitForActive.GetDescription())</label>
+                                <input name="MerchantStatus" type="hidden" value="@(Model.MerchantStatus)" />
+                            }
                         </td>
                         <td title="必填">*</td>
                     </tr>
                     <tr>
                         <td>可用余额：</td>
                         <td>
-                            <input name="BalanceAmount" type="text" class="formfield" value="@(Model.BalanceAmount.ToString("0.00"))" />
+                            <input name="BalanceAmount" type="text" class="formfield" value="@(Model.BalanceAmount.ToString("0.00"))" spellcheck="false" />
                         </td>
                         <td title="必填">*</td>
                     </tr>
                     <tr>
                         <td>冻结金额：</td>
                         <td>
-                            <input name="FrozenAmount" type="text" class="formfield" value="@(Model.FrozenAmount.ToString("0.00"))" />
+                            <input name="FrozenAmount" type="text" class="formfield" value="@(Model.FrozenAmount.ToString("0.00"))" spellcheck="false" />
                         </td>
                         <td title="必填">*</td>
                     </tr>
                     <tr>
                         <td>划扣费率：</td>
                         <td>
-                            <input name="DeductionUnitPrice" type="text" class="formfield" value="@(Model.DeductionUnitPrice.ToString("0.000"))" />
+                            <input name="DeductionUnitPrice" type="text" class="formfield" value="@(Model.DeductionUnitPrice.ToString("0.0000"))" spellcheck="false" />
                         </td>
                         <td title="必填">*</td>
                     </tr>
@@ -79,56 +87,56 @@
                     <tr>
                         <td>法人姓名：</td>
                         <td>
-                            <input name="LegalPersonRealName" type="text" class="formfield" value="@(Model.LegalPersonRealName)" />
+                            <input name="LegalPersonRealName" type="text" class="formfield" value="@(Model.LegalPersonRealName)" spellcheck="false" />
                         </td>
                         <td title="必填">*</td>
                     </tr>
                     <tr>
                         <td>法人身份证号：</td>
                         <td>
-                            <input name="LegalPersonIdCardNo" type="text" class="formfield" value="@(Model.LegalPersonIdCardNo)" />
+                            <input name="LegalPersonIdCardNo" type="text" class="formfield" value="@(Model.LegalPersonIdCardNo)" spellcheck="false" />
                         </td>
                         <td title="必填">*</td>
                     </tr>
                     <tr>
                         <td>法人手机号：</td>
                         <td>
-                            <input name="LegalPersonMobile" type="text" class="formfield" value="@(Model.LegalPersonMobile)" />
+                            <input name="LegalPersonMobile" type="text" class="formfield" value="@(Model.LegalPersonMobile)" spellcheck="false" />
                         </td>
                         <td title="必填">*</td>
                     </tr>
                     <tr data-optional>
                         <td>商户对公银行名称：</td>
                         <td>
-                            <input name="MerchantPublicBankName" type="text" class="formfield" value="@(Model.MerchantPublicBankName)" />
+                            <input name="MerchantPublicBankName" type="text" class="formfield" value="@(Model.MerchantPublicBankName)" spellcheck="false" />
                         </td>
                         <td></td>
                     </tr>
                     <tr data-optional>
                         <td>商户对公银行编码：</td>
                         <td>
-                            <input name="MerchantPublicBankCode" type="text" class="formfield" value="@(Model.MerchantPublicBankCode)" />
+                            <input name="MerchantPublicBankCode" type="text" class="formfield" value="@(Model.MerchantPublicBankCode)" spellcheck="false" />
                         </td>
                         <td></td>
                     </tr>
                     <tr data-optional>
                         <td>商户对公银行地址：</td>
                         <td>
-                            <input name="MerchantPublicBankAddress" type="text" class="formfield" value="@(Model.MerchantPublicBankAddress)" />
+                            <input name="MerchantPublicBankAddress" type="text" class="formfield" value="@(Model.MerchantPublicBankAddress)" spellcheck="false" />
                         </td>
                         <td></td>
                     </tr>
                     <tr data-optional>
                         <td>商户对公银行预留手机号：</td>
                         <td>
-                            <input name="MerchantPublicBankMobile" type="text" class="formfield" value="@(Model.MerchantPublicBankMobile)" />
+                            <input name="MerchantPublicBankMobile" type="text" class="formfield" value="@(Model.MerchantPublicBankMobile)" spellcheck="false" />
                         </td>
                         <td></td>
                     </tr>
                     <tr data-optional>
                         <td>统一社会信用代码：</td>
                         <td>
-                            <input name="USCC" type="text" class="formfield" value="@(Model.USCC)" />
+                            <input name="USCC" type="text" class="formfield" value="@(Model.USCC)" spellcheck="false" />
                         </td>
                         <td></td>
                     </tr>
@@ -151,16 +159,16 @@
                         </td>
                         <td style="width:100px;"></td>
                     </tr>
-                    @if (Model.MerchantNo.HasValue())
-                    {
-                        <tr>
-                            <td></td>
-                            <td style="padding-top:10px;">
-                                <button id="btnDelete" class="btn btn-delete">删除</button>
-                            </td>
-                            <td></td>
-                        </tr>
-                    }
+                    @*@if (Model.MerchantNo.HasValue())
+                        {
+                            <tr>
+                                <td></td>
+                                <td style="padding-top:10px;">
+                                    <button id="btnDelete" class="btn btn-delete">删除</button>
+                                </td>
+                                <td></td>
+                            </tr>
+                        }*@
                 </tfoot>
             </table>
         </div>

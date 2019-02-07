@@ -1,0 +1,47 @@
+﻿.mer-status-waitforactive,
+.mer-status-normal,
+.mer-status-closed,
+.mer-status-freezed {
+    padding: 2px;
+    border-radius: 2px;
+    font-weight: 500;
+}
+
+.mer-status-waitforactive {
+    color: #ff9900;
+}
+
+.mer-status-normal {
+    color: #339900;
+}
+
+.mer-status-closed {
+    color: #999;
+}
+
+.mer-status-freezed {
+    color: #ff3333;
+}
+
+.listview table tbody .ops {
+    display: inline-block;
+}
+
+.listview table tbody .ops:after {
+    display: block;
+    clear: both;
+    content: '';
+}
+
+.listview table tbody .ops a {
+    display: inline-block;
+    float: left;
+    margin-right: 8px;
+}
+
+.mer-activing {
+    width: 16px;
+    height: 16px;
+    background: url(/content/images/loading.gif) center center no-repeat;
+    background-size: 100%;
+}

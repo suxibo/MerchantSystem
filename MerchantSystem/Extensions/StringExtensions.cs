@@ -13,7 +13,7 @@ namespace MerchantSystem
         /// 将当前字符串安全地转换成Int32类型
         /// </summary>
         /// <param name="str"></param>
-        public static Int32 ToInt32(this String str)
+        public static Int32 ToInt32(this String str, Int32? defaultValue = null)
         {
             if (!String.IsNullOrWhiteSpace(str))
             {
@@ -23,14 +23,14 @@ namespace MerchantSystem
                 }
             }
 
-            return 0;
+            return defaultValue.HasValue ? defaultValue.Value : 0;
         }
 
         /// <summary>
         /// 将当前字符串安全地转换成Int64类型
         /// </summary>
         /// <param name="str"></param>
-        public static Int64 ToInt64(this String str)
+        public static Int64 ToInt64(this String str, Int64? defaultValue = null)
         {
             if (!String.IsNullOrWhiteSpace(str))
             {
@@ -40,14 +40,14 @@ namespace MerchantSystem
                 }
             }
 
-            return 0;
+            return defaultValue.HasValue ? defaultValue.Value : 0;
         }
 
         /// <summary>
         /// 将当前字符串安全地转换成Decimal类型
         /// </summary>
         /// <param name="str"></param>
-        public static Decimal ToDecimal(this String str)
+        public static Decimal ToDecimal(this String str, Decimal? defaultValue = null)
         {
             if (!String.IsNullOrWhiteSpace(str))
             {
@@ -57,7 +57,7 @@ namespace MerchantSystem
                 }
             }
 
-            return 0;
+            return defaultValue.HasValue ? defaultValue.Value : 0.00m;
         }
 
         /// <summary>
