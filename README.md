@@ -1,2 +1,2 @@
-# ZF-MerchantSystem
-逐风商户管理系统
+# MerchantSystem
+商户管理系统
